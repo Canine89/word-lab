@@ -11,5 +11,6 @@ except:
 
 
 for name, imageData in docx.images.items():
+    imageData.
     with open(os.path.join(saveFolderName, name), "wb") as fp:
         fp.write(imageData)
