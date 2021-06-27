@@ -1,8 +1,15 @@
 from docx import Document
 from PIL import Image
 from os.path import basename
+import os
 
-document = Document("./1-4장.docx")
+document = Document("./test1.docx")
+savefilepath = "./test"
+
+try:
+    os.mkdir(savefilepath)
+except:
+    pass
 
 _idx = 0
 for shape in document.inline_shapes:
@@ -15,5 +22,7 @@ for shape in document.inline_shapes:
 
     imgName = basename(contentPart.partname)
     imgData = contentPart._blob
-    with open(imgName, "wb") as fp:
+    
+    with open(os.path.join(savefilepath, imgName), "wb") as fp:
         fp.write(imgData)
+    _idx = _idx + 1
